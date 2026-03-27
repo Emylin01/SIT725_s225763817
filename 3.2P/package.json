@@ -8,7 +8,7 @@
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3.git"
+"url": "git+https://github.com/Emylin01/SIT725_s225763817.git"
 },
 "keywords": [
 "Nodejs",
@@ -20,10 +20,7 @@
 ],
 "author": "Emylin Poorvikah Pragash",
 "license": "MIT",
-"bugs": {
-"url": "https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3/issues"
-},
-"homepage": "https://github.com/ChoudharyNavit22/sit725-2021-t2-prac3#readme",
+"homepage": "https://github.com/Emylin01/SIT725_s225763817/tree/main/3.2P",
   "dependencies": {
     "express": "^5.2.1"
   }

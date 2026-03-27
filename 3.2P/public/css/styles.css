@@ -13,16 +13,16 @@ display: block;
 height: 50px;
 }
 .main-body {
-background-color: #F28487;
+background-color: #fcadaf;
 color: white;
-height: calc(100vh - 64px);
+min-height: calc(100vh - 64px);
 }
 .materialboxed-image {
 margin: 0 auto;
 height: 400px;
 }
 .click-me-button {
-background-color: #EE6E73;
+background-color: #df4f53;
 margin-top: 50px;
 }
 .card-reveal {
