@@ -1,0 +1,28 @@
+{
+  "name": "3.2p",
+  "version": "1.0.0",
+  "description": "SIT725 Task 4.2P",
+  "main": "server.js",
+"scripts": {
+"start": "node server.js"
+},
+"repository": {
+"type": "git",
+"url": "git+https://github.com/Emylin01/SIT725_s225763817.git"
+},
+"keywords": [
+"Nodejs",
+"Express",
+"Materialize",
+"HTML",
+"JS",
+"CSS"
+],
+"author": "Emylin Poorvikah Pragash",
+"license": "MIT",
+"homepage": "https://github.com/Emylin01/SIT725_s225763817/tree/main/4.2P",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
+
