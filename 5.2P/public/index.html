@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Books Catalog</title>
+</head>
+
+<body>
+
+    <h1>Books List</h1>
+
+    <div id="booksDisplay"></div>
+
+    <script>
+        const btn = document.getElementById('loadBooksBtn');
+        const display = document.getElementById('booksDisplay');
+
+        function renderBooks(books) {
+            display.innerHTML = '';
+
+            if (!Array.isArray(books) || books.length === 0) {
+                display.textContent = 'No books available';
+                return;
+            }
+
+            books.forEach(book => {
+                const p = document.createElement('p');
+                p.textContent = `${book.title} by ${book.author} (${book.year})`;
+                display.appendChild(p);
+            });
+        }
+
+        async function loadBooks() {
+            display.textContent = 'Loading...';
+
+            try {
+                const res = await fetch('/api/books');
+                const body = await res.json();
+                renderBooks(body.data);
+            } catch (err) {
+                console.error(err);
+                display.textContent = 'Error loading books';
+            }
+        }
+        window.onload = loadBooks;
+    </script>
+
+</body>
+
+</html>
