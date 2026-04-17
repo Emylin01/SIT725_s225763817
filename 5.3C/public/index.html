@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Books Catalogue</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:40px;
+}
+
+button{
+    background:#0d5c73;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    cursor:pointer;
+}
+
+#bookList{
+    margin-top:20px;
+    width:350px;
+    border:1px solid #999;
+    padding:15px;
+}
+
+.book-item{
+    cursor:pointer;
+    margin:8px 0;
+}
+
+.book-item:hover{
+    color:blue;
+}
+
+#bookDetails{
+    margin-top:30px;
+    width:500px;
+    border:1px solid #999;
+    padding:15px;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Books Catalogue developed by s225763817</h2>
+
+<p>Click the button below to get all books from the server:</p>
+
+<button id="loadBtn">Get all books</button>
+
+<div id="bookList"></div>
+
+<div id="bookDetails"></div>
+
+<script>
+const btn = document.getElementById('loadBtn');
+const list = document.getElementById('bookList');
+const details = document.getElementById('bookDetails');
+
+btn.addEventListener('click', async ()=>{
+
+    const res = await fetch('/api/books');
+    const body = await res.json();
+
+    list.innerHTML = '';
+    details.innerHTML = '';
+
+    body.data.forEach(book => {
+
+        const div = document.createElement('div');
+        div.className = 'book-item';
+        div.textContent = `${book.title} ${book.price} AUD`;
+
+        div.onclick = async ()=>{
+
+            const singleRes = await fetch('/api/books/' + book.id);
+            const singleBody = await singleRes.json();
+            const b = singleBody.data;
+
+            details.innerHTML = `
+                <p><strong>Title:</strong> ${b.title}</p>
+                <p><strong>Author:</strong> ${b.author}</p>
+                <p><strong>Year:</strong> ${b.year}</p>
+                <p><strong>Genre:</strong> ${b.genre}</p>
+                <p><strong>Summary:</strong> ${b.summary}</p>
+                <p><strong>Price (AUD):</strong> ${b.price}</p>
+            `;
+        };
+
+        list.appendChild(div);
+    });
+});
+</script>
+
+</body>
+</html>
