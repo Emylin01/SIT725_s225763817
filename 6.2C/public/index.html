@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+</head>
+
+<body>
+    <h1>Grade Calculator</h1>
+
+    <p>Enter marks separated by commas:</p>
+    <input id="marksInput" placeholder="Example: 80,90,100">
+    <button onclick="calculate()">Calculate Average</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        async function calculate() {
+            const input = document.getElementById('marksInput').value;
+
+            const marks = input
+                .split(',')
+                .map(mark => Number(mark.trim()));
+
+            const response = await fetch('/api/average', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ marks })
+            });
+
+            const data = await response.json();
+
+            document.getElementById('result').innerText =
+                data.average !== undefined
+                    ? `Average: ${data.average}`
+                    : `Error: ${data.error}`;
+        }
+    </script>
+</body>
+
+</html>
